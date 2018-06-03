@@ -55,7 +55,7 @@ public class TruckerController {
 	 * @return List<Vehicle> : List of vehicles
 	 */
 	@RequestMapping(method=RequestMethod.GET , value="/vehicles", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Vehicle> findAll(){
+	public List<Vehicle> findAllVehicles(){
 		return truckerService.findAllVehicles();
 	}
 	
@@ -74,7 +74,7 @@ public class TruckerController {
 	 * @return Latitude,Longitude 
 	 */
 	@RequestMapping(method=RequestMethod.GET , value="/location/{vin}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Map<String,Double> findLocation(@PathVariable("vin") String vin){
+	public Map<String,Double> findVehicleLocation(@PathVariable("vin") String vin){
 		return truckerService.findLocation(vin);
 	}
 	
@@ -84,7 +84,7 @@ public class TruckerController {
 	 * @return List<Alert> : list of alerts
 	 */
 	@RequestMapping(method=RequestMethod.GET , value="/alerts/{vin}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Alert> findVehicleAlert(@PathVariable("vin") String vin){
+	public List<Alert> findVehicleAlerts(@PathVariable("vin") String vin){
 		return truckerService.findVehicleAlerts(vin);
 	}
 	
