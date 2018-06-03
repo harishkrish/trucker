@@ -157,6 +157,8 @@ public class TruckerServiceImpl implements TruckerService {
 	 */
 	@Transactional
 	public List<Alert> findVehicleAlerts(String vin) {
+		if(vehicleRepository.findVehicle(vin).size()==0)
+			throw new ResourceNotFoundException("No vehicle with id :"+vin);
 		return alertRepository.findVehicleAlerts(vin);
 	}
 
