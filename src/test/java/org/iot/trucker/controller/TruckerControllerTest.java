@@ -128,7 +128,8 @@ public class TruckerControllerTest {
 		vehicle.setLastServiceDate(new Timestamp(System.currentTimeMillis()));
 		vehicles.add(vehicle);
 		mvc.perform(MockMvcRequestBuilders.put("/vehicles").contentType(MediaType.APPLICATION_JSON)
-				.content(mapper.writeValueAsBytes(vehicles))).andExpect(MockMvcResultMatchers.status().isOk());
+				.content(mapper.writeValueAsBytes(vehicles))).andExpect(MockMvcResultMatchers.status().isOk())
+		.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(1)));
 	}
 
 	/**
@@ -158,7 +159,8 @@ public class TruckerControllerTest {
 		tires.setRearRight(34);
 		reading.setTires(tires);
 		mvc.perform(MockMvcRequestBuilders.post("/readings").contentType(MediaType.APPLICATION_JSON)
-				.content(mapper.writeValueAsBytes(reading))).andExpect(MockMvcResultMatchers.status().isOk());
+				.content(mapper.writeValueAsBytes(reading))).andExpect(MockMvcResultMatchers.status().isOk())
+		.andExpect(MockMvcResultMatchers.jsonPath("$.vin", Matchers.is("V123")));
 
 	}
 
