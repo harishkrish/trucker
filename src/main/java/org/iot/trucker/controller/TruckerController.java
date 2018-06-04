@@ -36,8 +36,8 @@ public class TruckerController {
 	 */
 	@CrossOrigin(origins = "http://mocker.egen.io")
 	@RequestMapping(method = RequestMethod.PUT, value="/vehicles", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void createVehicle(@RequestBody List<Vehicle> vehicles) {
-		 truckerService.createVehicle(vehicles);
+	public List<Vehicle> createVehicle(@RequestBody List<Vehicle> vehicles) {
+		 return truckerService.createVehicle(vehicles);
 	}
 	
 	/**
@@ -46,8 +46,8 @@ public class TruckerController {
 	 */
 	@CrossOrigin(origins = "http://mocker.egen.io")	
 	@RequestMapping(method=RequestMethod.POST , value="/readings", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void createReading(@RequestBody Reading reading){
-		 truckerService.createReading(reading);
+	public Reading createReading(@RequestBody Reading reading){
+		 return truckerService.createReading(reading);
 	}
 	
 	/**

@@ -59,8 +59,8 @@ public class TruckerServiceImpl implements TruckerService {
 	 * @see org.iot.trucker.service.TruckerService#createVehicle(java.util.List)
 	 */
 	@Transactional
-	public void createVehicle(List<Vehicle> vehicles) {
-		vehicleRepository.saveAll(vehicles);
+	public List<Vehicle> createVehicle(List<Vehicle> vehicles) {
+		return (List<Vehicle>) vehicleRepository.saveAll(vehicles);
 	}
 
 	/*
@@ -71,14 +71,15 @@ public class TruckerServiceImpl implements TruckerService {
 	 * entity.Reading)
 	 */
 	@Transactional
-	public void createReading(Reading reading) {
+	public Reading createReading(Reading reading) {
 		tiresRepository.save(reading.getTires());
-		readingRepository.save(reading);
+		Reading savedReading = readingRepository.save(reading);
 		Optional<Vehicle> vehicle = vehicleRepository.findByVin(reading.getVin());
 		// since we need vehicle entry to check thresholds
 		if (vehicle.isPresent()) {
 			checkRules(reading, vehicle.get());
 		}
+		return savedReading;
 	}
 
 	/*

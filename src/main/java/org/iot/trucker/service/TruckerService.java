@@ -18,13 +18,13 @@ public interface TruckerService {
 	 * service to create vehicle entry
 	 * @param vehicles : list of vehicles
 	 */
-	void createVehicle(List<Vehicle> vehicle);
+	List<Vehicle> createVehicle(List<Vehicle> vehicle);
 	
 	/**
 	 * service to create reading entries and calls to alert
 	 * @param reading : reading object
 	 */
-	void createReading(Reading reading);
+	Reading createReading(Reading reading);
 	
 	/**
 	 * service to get list of all vehicles
