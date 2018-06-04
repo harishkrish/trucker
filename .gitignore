@@ -1,5 +1,6 @@
 **/.idea
-
+**/.classpath
+**/.project
 **/node_modules
 **/bower_components
 **/.tmp
@@ -12,3 +13,4 @@
 **/RemoteSystemsTempFiles
 
 **/target/*
+/target/
